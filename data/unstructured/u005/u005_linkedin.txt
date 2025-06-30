@@ -1,0 +1,31 @@
+Eve Adams - Staff Software Engineer at Google | Search & AI
+
+Summary:
+Staff Software Engineer with a deep focus on high-performance distributed systems and algorithms. Expertise in search infrastructure, relevance ranking, and applied machine learning. Driven by the intellectual challenge of organizing the world's information and making it universally accessible and useful.
+
+Experience:
+
+Staff Software Engineer
+Google | New York, NY
+2018 - Present
+- Key contributor and tech lead for Google's core search ranking algorithms.
+- Designed and implemented significant improvements to the indexing pipeline, increasing data freshness by 50% and reducing query latency.
+- Led a project to integrate a new deep learning model into the main search stack, improving relevance for long-tail queries.
+
+Software Engineer
+Amazon | Seattle, WA
+2016 - 2018
+- Worked on the A9 product search engine, developing features for query understanding and result diversification.
+- Optimized backend services written in Java and C++ for low-latency performance.
+
+Education:
+
+Massachusetts Institute of Technology (MIT)
+Master of Engineering (M.Eng), Computer Science and Artificial Intelligence
+
+Cornell University
+Bachelor of Science (B.S.), Computer Science
+
+Skills & Interests:
+- Core Skills: C++, Python, Java, Distributed Systems, Information Retrieval, Machine Learning, Algorithm Design
+- Interests: Competitive Programming (ICPC World Finalist), Rock Climbing, Playing the piano, Reading classic science fiction.

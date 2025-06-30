@@ -1,0 +1,33 @@
+Charlie Brown - Lead Data Scientist at Apple | Machine Learning & Visualization
+
+Summary:
+Lead Data Scientist with deep expertise in building and deploying end-to-end machine learning models that drive critical business decisions. Adept at translating complex data into actionable insights through compelling data stories and visualizations. Passionate about pushing the boundaries of what's possible with data and AI.
+
+Experience:
+
+Lead Data Scientist
+Apple | Cupertino, CA
+2017 - Present
+- Manages a team of data scientists focused on supply chain optimization and demand forecasting.
+- Developed and deployed predictive models that have saved the company over $100 million in logistical costs annually.
+- Pioneer of using reinforcement learning for inventory management within the company.
+
+Data Scientist
+Twitter | San Francisco, CA
+2014 - 2017
+- Worked on the user growth and engagement team, analyzing user behavior to inform product development and marketing strategies.
+- Designed and analyzed large-scale experiments that led to significant improvements in user retention.
+
+Education:
+
+University of California, Berkeley
+Ph.D., Statistics
+- Dissertation on Bayesian methods for time-series forecasting.
+
+University of California, Berkeley
+Master of Science (M.S.), Computer Science
+
+Skills & Interests:
+- Core Skills: Python (Pandas, Scikit-learn, NumPy), R, SQL, Spark, Tableau, Causal Inference
+- ML/DL: Deep Learning (TensorFlow, PyTorch), Statistical Modeling, Reinforcement Learning
+- Interests: Data Visualization, Generative Art, Competitive Cycling, Chess.

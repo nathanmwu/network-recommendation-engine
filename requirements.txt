@@ -1,0 +1,22 @@
+# Core data handling
+pandas
+numpy<2.0
+duckdb
+
+# PDF and text processing
+PyMuPDF
+sentence-transformers
+python-dotenv
+
+# Vector Database
+qdrant-client
+
+# Graph Database
+neo4j
+
+# AI Agent Framework
+langchain
+langchain-google-genai
+langchain-community
+
+

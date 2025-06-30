@@ -1,0 +1,36 @@
+Alice Johnson - Senior Software Engineer at Meta | AI & Machine Learning
+
+Summary:
+Innovative and results-driven Senior Software Engineer with over 7 years of experience in designing, developing, and deploying large-scale distributed systems and machine learning models. Passionate about leveraging technology to solve complex problems and create impactful products. Expertise in Python, C++, and cloud computing. Currently focused on developing next-generation AI recommendation engines at Meta.
+
+Experience:
+
+Senior Software Engineer
+Meta | Menlo Park, CA
+June 2020 - Present
+- Lead developer on the core AI recommendations team, responsible for designing and implementing algorithms that personalize content for millions of users daily.
+- Architected and scaled a microservices-based infrastructure on AWS, resulting in a 40% reduction in latency and a 25% increase in system throughput.
+- Mentored junior engineers, providing guidance on best practices for code quality, testing, and system design.
+- Collaborated with cross-functional teams, including product managers and data scientists, to define project roadmaps and deliver features on schedule.
+
+Software Engineer
+InnovateTech (Startup) | San Francisco, CA
+July 2018 - May 2020
+- Developed and maintained backend services for a high-traffic e-commerce platform using Python, Django, and PostgreSQL.
+- Implemented a real-time data processing pipeline with Kafka and Spark, enabling personalized user analytics.
+- Played a key role in the company's successful Series A funding round by building and demoing core product features.
+
+Education:
+
+Massachusetts Institute of Technology (MIT)
+Master of Science (M.S.), Computer Science
+- Specialization in Artificial Intelligence and Machine Learning.
+- Thesis: "Scalable Deep Learning Models for Natural Language Understanding."
+
+Massachusetts Institute of Technology (MIT)
+Bachelor of Science (B.S.), Computer Science and Engineering
+
+Skills & Interests:
+- Programming Languages: Python, C++, Java, SQL
+- Technologies: TensorFlow, PyTorch, Scikit-learn, Docker, Kubernetes, AWS, GCP
+- Interests: Landscape Photography, Backcountry Hiking, Skiing, Open Source Contribution

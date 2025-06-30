@@ -1,0 +1,32 @@
+Bob Smith - Senior Product Manager at Google | Travel & Technology Enthusiast
+
+Summary:
+A strategic and user-centric Senior Product Manager with a decade of experience leading cross-functional teams to deliver world-class products. Proven track record of driving product strategy from conception to launch at top-tier tech companies. Passionate about exploring new cultures and integrating travel experiences into a global mindset.
+
+Experience:
+
+Senior Product Manager
+Google | New York, NY
+2019 - Present
+- Leading the product vision for Google Maps' new exploratory features, focusing on personalized recommendations for travel and local discovery.
+- Drove a 20% increase in user engagement by launching a new ML-powered recommendations engine.
+- Manages a team of 5 PMs and works closely with engineering and UX to define a multi-year product roadmap.
+
+Product Manager
+Microsoft | Redmond, WA
+2015 - 2019
+- Managed the roadmap and feature delivery for key components of the Azure cloud platform, specifically focusing on developer tools and services.
+- Successfully launched a new SDK that was adopted by over 100,000 developers in its first year.
+
+Education:
+
+Stanford University
+Master of Business Administration (MBA)
+
+Stanford University
+Bachelor of Science (B.S.), Computer Science
+
+Skills & Interests:
+- Core Skills: Product Strategy, Roadmapping, A/B Testing, User Research, Agile Methodologies, Go-to-Market Strategy
+- Technical Skills: SQL, Python for Data Analysis, JIRA, Tableau
+- Interests: International Travel (30+ countries), Skiing, Photography, Reading about historical maps.

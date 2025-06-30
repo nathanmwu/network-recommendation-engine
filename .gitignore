@@ -1,0 +1,25 @@
+# Environment
+.env*
+
+# Virtual Environment
+venv/
+
+# Project Specs
+specs.md
+
+# IDE specific
+.idea/
+.vscode/
+
+# Python specific
+__pycache__/
+*.pyc
+
+# OS specific
+.DS_Store
+
+# Data & DB files
+data/db/
+data/parsed/
+data/qdrant_db/
+data/qdrant_storage/
