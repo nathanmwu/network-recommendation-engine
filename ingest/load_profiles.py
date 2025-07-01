@@ -15,23 +15,23 @@ if not os.path.exists(db_dir):
 # Connect to DuckDB (it will create the file if it doesn't exist)
 con = duckdb.connect(database=DB_FILE, read_only=False)
 
-# Read data from CSV
+# Ingest data using DuckDB's native CSV reader for robustness
 try:
-    profiles = pd.read_csv(CSV_FILE)
-    print(f"Successfully loaded {len(profiles)} profiles from {CSV_FILE}")
-
-    # Create a table and insert data
+    # Drop the table if it exists to ensure a fresh start
     con.execute("DROP TABLE IF EXISTS users")
-    con.execute("CREATE TABLE users AS SELECT * FROM profiles")
-    print("Successfully created 'users' table in DuckDB.")
+    
+    # Use DuckDB's native CSV reader to create the table. This is more reliable.
+    con.execute(f"CREATE TABLE users AS SELECT * FROM read_csv_auto('{CSV_FILE}')")
+    
+    print(f"Successfully created 'users' table in DuckDB from {CSV_FILE}")
 
-    # Verify by querying the table
-    print("\nVerifying data in 'users' table:")
-    result = con.execute("SELECT name, company, school FROM users LIMIT 5").fetchdf()
+    # Verify by querying all columns of the table to ensure correctness
+    print("\nVerifying data in 'users' table (first 5 rows):")
+    result = con.execute("SELECT * FROM users LIMIT 5").fetchdf()
     print(result)
 
 except FileNotFoundError:
-    print(f"Error: {CSV_FILE} not found. Please create it with user data.")
+    print(f"Error: {CSV_FILE} not found. Please ensure it exists.")
 except Exception as e:
     print(f"An error occurred: {e}")
 finally:

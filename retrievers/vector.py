@@ -40,11 +40,11 @@ def get_semantic_recommendations(user_id: str, qdrant_client: QdrantClient, mode
         limit=5, # Return top 5, including the user themselves
     )
     
-    # Extract user_ids from payload, excluding the original user
-    recommendations = [
-        hit.payload['user_id'] for hit in search_result 
-        if hit.payload['user_id'] != user_id
-    ]
+    # Extract user_ids and construct reason, excluding the original user
+    recommendations = [{
+        "user_id": hit.payload['user_id'],
+        "reason": "Semantically similar bio"
+    } for hit in search_result if hit.payload['user_id'] != user_id]
     return recommendations
 
 def main():

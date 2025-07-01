@@ -17,8 +17,45 @@ def get_sql_recommendations(field: str, value: str, duckdb_con):
     result = duckdb_con.execute(query, [value]).fetchall()
     
     # fetchall returns a list of tuples, e.g., [('user2',), ('user5',)]
-    recommendations = [row[0] for row in result]
+    recommendations = [{
+        "user_id": row[0],
+        "reason": f"Same {field}: {value}"
+    } for row in result]
     return recommendations
+
+def get_user_details(user_ids: list[str]):
+    """Fetches full details for a list of user IDs from DuckDB by creating its own connection."""
+    if not user_ids:
+        return []
+
+    con = None
+    try:
+        con = duckdb.connect(database=DUCKDB_PATH, read_only=True)
+        
+        # Create a placeholder string for the IN clause
+        placeholders = ', '.join(['?'] * len(user_ids))
+        
+        query = f"SELECT user_id, name, email, company, school, location, bio FROM users WHERE user_id IN ({placeholders})"
+        
+        cursor = con.execute(query, user_ids)
+        results = cursor.fetchall()
+        
+        # Convert results to a list of dictionaries using column names for robustness
+        users_details = []
+        columns = [desc[0] for desc in cursor.description]
+        for row in results:
+            users_details.append(dict(zip(columns, row)))
+            
+        return users_details
+    finally:
+        if con:
+            con.close()
+
+def get_user_id_by_name(name: str, duckdb_con):
+    """Fetches a user_id for a given user name from DuckDB."""
+    query = "SELECT user_id FROM users WHERE lower(name) = lower(?)"
+    result = duckdb_con.execute(query, [name]).fetchone()
+    return result[0] if result else None
 
 def main():
     """Main function to test the SQL retriever."""
