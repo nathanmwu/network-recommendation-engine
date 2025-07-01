@@ -7,6 +7,7 @@ duckdb
 PyMuPDF
 sentence-transformers
 python-dotenv
+spacy
 
 # Vector Database
 qdrant-client
@@ -18,5 +19,8 @@ neo4j
 langchain
 langchain-google-genai
 langchain-community
+
+# Web UI
+streamlit
 
 

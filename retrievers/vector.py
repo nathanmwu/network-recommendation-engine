@@ -6,7 +6,7 @@ import argparse
 
 # --- Configuration ---
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-QDRANT_PATH = os.path.join(DATA_DIR, 'qdrant_storage')
+QDRANT_PATH = os.path.join(DATA_DIR, 'qdrant_db')
 BIOS_FILE_PATH = os.path.join(DATA_DIR, 'parsed', 'parsed_bios.jsonl')
 COLLECTION_NAME = "profiles"
 
