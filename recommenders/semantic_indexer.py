@@ -1,34 +1,64 @@
 import json
 import os
+import pandas as pd
 from qdrant_client import QdrantClient, models
 from sentence_transformers import SentenceTransformer
 
 # Define paths
 DATA_DIR = "data"
 BIOS_FILE = os.path.join(DATA_DIR, "parsed", "parsed_bios.jsonl")
+USERS_CSV_FILE = os.path.join(DATA_DIR, "structured", "users.csv")
 
 # Qdrant configuration
 QDRANT_PATH = os.path.join(DATA_DIR, "qdrant_storage")
 COLLECTION_NAME = "profiles"
 
 def index_bios():
-    """Reads bios, generates embeddings, and indexes them in Qdrant."""
-    if not os.path.exists(BIOS_FILE):
-        print(f"Error: Bios file not found at {BIOS_FILE}")
-        print("Please run 'ingest/parse_bios.py' first.")
+    """Reads bios from both structured CSV and parsed JSONL files,
+    generates embeddings, and indexes them in Qdrant."""
+    
+    # --- 1. Collect all bios from different sources ---
+    user_bios = {}
+
+    # Source 1: Parsed bios from JSONL
+    if os.path.exists(BIOS_FILE):
+        with open(BIOS_FILE, 'r', encoding='utf-8') as f:
+            for line in f:
+                record = json.loads(line)
+                if record.get("user_id") and record.get("bio"):
+                    user_bios[record["user_id"]] = record["bio"]
+        print(f"Loaded {len(user_bios)} bios from {BIOS_FILE}")
+    else:
+        print(f"Warning: Parsed bios file not found at {BIOS_FILE}. Skipping.")
+
+    # Source 2: Structured bios from users.csv
+    if os.path.exists(USERS_CSV_FILE):
+        csv_users_df = pd.read_csv(USERS_CSV_FILE)
+        # Filter out rows where bio is missing
+        csv_users_df = csv_users_df[csv_users_df['bio'].notna()]
+        
+        initial_count = len(user_bios)
+        for _, row in csv_users_df.iterrows():
+            user_bios[row['user_id']] = row['bio']
+        print(f"Loaded or updated {len(user_bios) - initial_count} bios from {USERS_CSV_FILE}")
+    else:
+        print(f"Error: users.csv not found at {USERS_CSV_FILE}. Cannot proceed without a user source.")
         return
 
-    # Load the sentence transformer model
+    if not user_bios:
+        print("No user bios found from any source. Exiting.")
+        return
+
+    # --- 2. Setup model and Qdrant client ---
     print("Loading sentence transformer model...")
     model = SentenceTransformer('all-MiniLM-L6-v2', device='cpu')
     print("Model loaded.")
 
-    # Initialize Qdrant client to use a local, file-based database
     os.makedirs(QDRANT_PATH, exist_ok=True)
     client = QdrantClient(path=QDRANT_PATH)
-    print("Qdrant client initialized in-memory.")
+    print("Qdrant client initialized.")
 
-    # Recreate Qdrant collection
+    # --- 3. Recreate Qdrant collection ---
     vector_size = model.get_sentence_embedding_dimension()
     if client.collection_exists(collection_name=COLLECTION_NAME):
         client.delete_collection(collection_name=COLLECTION_NAME)
@@ -44,32 +74,28 @@ def index_bios():
         print(f"Failed to create collection: {e}")
         return
 
-    # Read bios and prepare for indexing
+    # --- 4. Generate embeddings and prepare points ---
     points = []
-    with open(BIOS_FILE, 'r', encoding='utf-8') as f:
-        for i, line in enumerate(f):
-            record = json.loads(line)
-            vector = model.encode(record["bio"]).tolist()
-            points.append(
-                models.PointStruct(
-                    id=i + 1,  # Qdrant IDs must be integers or UUIDs
-                    vector=vector,
-                    payload={"user_id": record["user_id"]}
-                )
-            )
+    print(f"Generating embeddings for {len(user_bios)} unique user bios...")
     
-    if not points:
-        print("No bios found to index.")
-        return
+    # Using a list comprehension for creating points
+    points = [
+        models.PointStruct(
+            id=i + 1,
+            vector=model.encode(bio).tolist(),
+            payload={"user_id": user_id}
+        )
+        for i, (user_id, bio) in enumerate(user_bios.items())
+    ]
 
-    # Upsert points to the collection
+    # --- 5. Upsert points to the collection ---
     try:
         client.upsert(
             collection_name=COLLECTION_NAME,
             points=points,
             wait=True
         )
-        print(f"Successfully indexed {len(points)} bios.")
+        print(f"Successfully indexed {len(points)} bios into Qdrant.")
     except Exception as e:
         print(f"Failed to upsert points: {e}")
 

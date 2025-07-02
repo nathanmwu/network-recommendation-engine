@@ -1,10 +1,10 @@
 user_id,name,email,company,school,location,bio,tags,title
-u001,Alice,alice@example.com,Meta,MIT,San Francisco,"Software engineer at Meta, interested in AI and photography.",AI;Photography;Hiking,
-u002,Bob,bob@example.com,Google,Stanford,New York,"Product manager at Google, previously at Microsoft. Loves to travel.",Product Management;Travel;Skiing,
-u003,Charlie,charlie@example.com,Apple,UC Berkeley,San Francisco,Data scientist at Apple. Passionate about machine learning and data visualization.,Data Science;Machine Learning;Visualization,
-u004,Diana,diana@example.com,Netflix,MIT,Los Angeles,UX designer at Netflix. Formerly at a startup. Enjoys painting and yoga.,UX Design;Startups;Painting;Yoga,
-u005,Eve,eve@example.com,Google,MIT,New York,"Software engineer at Google, working on search algorithms.",AI;Search;Algorithms,
-u006,Frank,frank@example.com,Microsoft,Stanford,Seattle,Cloud architect at Microsoft. Loves hiking and open source.,Cloud Computing;Open Source;Hiking,
+u001,Alice Heart,alice@example.com,Meta,MIT,San Francisco,"Software engineer at Meta, interested in AI and photography.",AI;Photography;Hiking,Software Engineer
+u002,Bob Womack,bob@example.com,Google,Stanford,New York,"Product manager at Google, previously at Microsoft. Loves to travel.",Product Management;Travel;Skiing,Product Manager
+u003,Charlie Brown,charlie@example.com,Apple,UC Berkeley,San Francisco,Data scientist at Apple. Passionate about machine learning and data visualization.,Data Science;Machine Learning;Visualization,Data Scientist
+u004,Diana Green,diana@example.com,Netflix,MIT,Los Angeles,UX designer at Netflix. Formerly at a startup. Enjoys painting and yoga.,UX Design;Startups;Painting;Yoga,UX Designer
+u005,Eve Witherspoon,eve@example.com,Google,MIT,New York,"Software engineer at Google, working on search algorithms.",AI;Search;Algorithms,Software Engineer
+u006,Frank Herbert,frank@example.com,Microsoft,Stanford,Seattle,Cloud architect at Microsoft. Loves hiking and open source.,Cloud Computing;Open Source;Hiking,Cloud Architect
 u007,Donna Schmidt,u007@example.com,Reddit,MIT,Sydney,Counsellor passionate about AI. Previously worked at Reddit. Alumni of MIT.,"AI, AR/VR, Cloud",Counsellor
 u008,Jill English,u008@example.com,Amazon,Columbia,New York,Outdoor activities/education manager passionate about Game Dev and Web Dev. Previously worked at Amazon. Alumni of Columbia.,"Web Dev, Finance, AR/VR, Game Dev, Computer Vision",Outdoor activities/education manager
 u009,Matthew Ryan,u009@example.com,Palantir,MIT,Denver,Landscape architect passionate about Cloud. Previously worked at Palantir. Alumni of MIT.,"AI, Game Dev, Cloud, Data Science",Landscape architect

@@ -35,7 +35,7 @@ def get_user_details(user_ids: list[str]):
         # Create a placeholder string for the IN clause
         placeholders = ', '.join(['?'] * len(user_ids))
         
-        query = f"SELECT user_id, name, email, company, school, location, bio FROM users WHERE user_id IN ({placeholders})"
+        query = f"SELECT user_id, name, email, company, school, location, bio, title FROM users WHERE user_id IN ({placeholders})"
         
         cursor = con.execute(query, user_ids)
         results = cursor.fetchall()
@@ -51,11 +51,17 @@ def get_user_details(user_ids: list[str]):
         if con:
             con.close()
 
-def get_user_id_by_name(name: str, duckdb_con):
-    """Fetches a user_id for a given user name from DuckDB."""
-    query = "SELECT user_id FROM users WHERE lower(name) = lower(?)"
-    result = duckdb_con.execute(query, [name]).fetchone()
-    return result[0] if result else None
+def get_user_id_by_name(name: str):
+    """Fetches a user_id for a given user name from DuckDB by creating its own connection."""
+    con = None
+    try:
+        con = duckdb.connect(database=DUCKDB_PATH, read_only=True)
+        query = "SELECT user_id FROM users WHERE name = ? LIMIT 1"
+        result = con.execute(query, [name]).fetchone()
+        return result[0] if result else None
+    finally:
+        if con:
+            con.close()
 
 def main():
     """Main function to test the SQL retriever."""

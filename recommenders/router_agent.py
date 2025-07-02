@@ -97,7 +97,7 @@ def create_agent_executor():
 
     llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0, convert_system_message_to_human=True)
     agent = create_tool_calling_agent(llm, tools, prompt)
-    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, return_intermediate_steps=True)
     
     return agent_executor
 
